@@ -6,8 +6,6 @@ from .forms import PostForm, CommentForm
 from django.urls import reverse_lazy, reverse
 from user.decorators import login_required
 
-# Create your views here.
-
 class Index(View):
     def get(self, request):
         post_objs = Post.objects.all()
@@ -26,7 +24,7 @@ class Write(CreateView):
     model = Post
     form_class = PostForm
     success_url = reverse_lazy('blog:list')
-    @login_required
+    
     def write(request):
         if request.method == 'POST':
             form = PostForm(request.POST)
@@ -42,18 +40,16 @@ class Update(UpdateView):
     template_name = 'blog/post_edit.html'
     fields = ['title', 'content', 'category']
     
-    
-    # intial 기능 사용 -> form에 값을 미리 넣어주기 위해서
     def get_initial(self):
-        initial = super().get_initial() # UpdateView(generic view)에서 제공하는 initial(딕셔너리)
-        post = self.get_object() # pk 기반으로 객체를 가져옴
+        initial = super().get_initial() # UpdateView
+        post = self.get_object() 
         initial['title'] = post.title
         initial['content'] = post.content
         initial['category'] = post.category
         return initial
     
-    def get_success_url(self): # get_absolute_url
-        post = self.get_object() # pk 기반으로 현재 객체 가져오기
+    def get_success_url(self):
+        post = self.get_object() 
         return reverse('blog:detail', kwargs={ 'pk': post.pk })
 
 class Delete(DeleteView):
@@ -61,24 +57,13 @@ class Delete(DeleteView):
     success_url = reverse_lazy('blog:list')
 
 class DetailView(View):
-    def get(self, request, pk): # post_id: 데이터베이스 post_id
-        # list -> object 상세 페이지 -> 상세 페이지 하나의 내용
-        # pk 값을 왔다갔다, 하나의 인자
-        
-        # 데이터베이스 방문
-        # 해당 글
-        # 장고 ORM (pk: 무조건 pk로 작성해야한다.)
+    def get(self, request, pk): # post_id:
         post = Post.objects.get(pk=pk)
         # 댓글
         comments = Comment.objects.filter(post=post)
-        # 해시태그
-        # hashtags = HashTag.objects.filter(post=post)
         
         # 댓글 Form
         comment_form = CommentForm()
-        
-        # 태그 Form
-        # hashtag_form = HashTagForm()
         
         context = {
             'post': post,
@@ -91,7 +76,6 @@ class DetailView(View):
 ### Comment
 class CommentWrite(View):
     # def get(self, request):
-    #     pass
     def post(self, request, pk):
         form = CommentForm(request.POST)
         if form.is_valid():
@@ -99,9 +83,7 @@ class CommentWrite(View):
             content = form.cleaned_data['content']
             # 해당 아이디에 해당하는 글 불러옴
             post = Post.objects.get(pk=pk)
-            # 댓글 객체 생성, create 메서드를 사용할 때는 save 필요 없음
-            comment = Comment.objects.create(post=post, content=content)
-            # comment = Comment(post=post) -> comment.save()
+            comment = Comment.objects.create(post=post, content=content)  
             return redirect('blog:detail', pk=pk)
 
 
@@ -115,5 +97,3 @@ class CommentDelete(View):
         comment.delete()
         
         return redirect('blog:detail', pk=post_id)
-
-### category

@@ -41,7 +41,7 @@ def login(request):
 
         if loginform.is_valid():
             request.session['login_session'] = loginform.login_session
-            # request.session.set_expiry(0)
+            request.session.set_expiry(0)
             return redirect('/')
         else:
             context['forms'] = loginform
