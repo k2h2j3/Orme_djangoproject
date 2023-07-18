@@ -6,7 +6,7 @@
 {% if form.errors %}
     {% include 'blog/form_error.html' %}
 {% else %}
-    {% trans 'Welcome!' %}
+    {% trans '수정화면입니다' %}
     <form action="{% url 'blog:edit' pk=post.pk %}" method="post">
         {% csrf_token %}
         {{ form.as_p }}

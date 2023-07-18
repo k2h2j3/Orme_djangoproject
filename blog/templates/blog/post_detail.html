@@ -7,6 +7,7 @@
     {% csrf_token %}
     <input type="submit" value="삭제" class="btn">
 </form>
+<p>카테고리: {{ post.category }}</p>
 <p>내용: {{ post.content }}</p>
 <p>작성자: {{ post.writer }}</p>
 <p>작성일: {{ post.created_at }}</p>
