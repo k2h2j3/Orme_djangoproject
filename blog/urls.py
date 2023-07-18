@@ -18,4 +18,5 @@ urlpatterns = [
     path("detail/<int:pk>/comment/write/", views.CommentWrite.as_view(), name='cm-write'),
     # 코멘트 삭제
     path("detail/comment/<int:pk>/delete/", views.CommentDelete.as_view(), name='cm-delete'),
+    # 카테고리 검색
 ]
