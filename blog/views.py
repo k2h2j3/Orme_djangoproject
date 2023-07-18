@@ -24,7 +24,6 @@ class Write(CreateView):
     model = Post
     form_class = PostForm
     success_url = reverse_lazy('blog:list')
-
     def write(request):
         if request.method == 'POST':
             form = PostForm(request.POST)
