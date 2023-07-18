@@ -4,6 +4,7 @@ from django.views.generic import ListView, CreateView, DetailView, UpdateView, D
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
 from django.urls import reverse_lazy, reverse
+from user.decorators import login_required
 
 # Create your views here.
 
@@ -20,10 +21,12 @@ class List(ListView):
     template_name = 'blog/post_list.html'
     context_object_name = 'posts'
 
+
 class Write(CreateView):
     model = Post
     form_class = PostForm
     success_url = reverse_lazy('blog:list')
+    @login_required
     def write(request):
         if request.method == 'POST':
             form = PostForm(request.POST)
