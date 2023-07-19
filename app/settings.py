@@ -41,8 +41,8 @@ INSTALLED_APPS = [
     'django_extensions',
     'rest_framework',
     'home',
-    'blog',
     'user',
+    'board',
 ]
 
 GRAPH_MODELS = {
@@ -138,3 +138,39 @@ STATICFILES_DIRS = [
 ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# summernote환경설정
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+INSTALLED_APPS += ['django_summernote']
+
+import os
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+SUMMERNOTE_THEME = 'bs4'
+
+SUMMERNOTE_CONFIG = {
+    'attachment_filesize_limit' : 1024 * 1024 * 10,
+
+    #summernote setting
+    'summernote' : {
+        'width': 720,
+        'height' : 480,
+        'lang': 'ko-KR',
+        'toolbar': [
+            ['style', ['style']],
+            ['font', ['bold', 'italic', 'underline', 'superscript', 'subscript', 'strikethrough', 'clear']],
+            ['fontname', ['fontname']],
+            ['fontsize', ['fontsize']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['height', ['height']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'hr']],
+            ['view', ['fullscreen', 'codview']],
+            ['help', ['help']],
+        ],
+    }
+}

@@ -1,0 +1,8 @@
+{% extends 'home/index.html' %}
+
+{% block contents %}
+<div>게시판입니다</div>
+<div>
+    <a href="{% url 'board:board_write' %}"><button>글쓰기</button></a>
+</div>
+{% endblock contents %}
