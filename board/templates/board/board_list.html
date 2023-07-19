@@ -1,51 +1,147 @@
 {% extends 'home/index.html' %}
 
 {% block contents %}
-<div>게시판입니다</div>
-<div>
-    <a href="{% url 'board:board_write' %}"><button>글쓰기</button></a>
-</div>
 
-<div class="board">
-    <div class="normal-board">
-        <p>(일반 게시판)</p>
-        {% for board in normal_boards %}
-        {% if board %}
-        <a href='/board/detail/{{ board.id }}' target='_self'>
-          <div>{{ board.title }} / {{ board.writer }} / {{ board.write_dttm }}</div>  
-        </a>
-        {% endif %}
-        {% endfor %}
-    </div>
-    <div class="question-board">
-        <p>(질문 게시판)</p>
-        {% for board in question_boards %}
-        {% if board %}
-        <a href='/board/detail/{{ board.id }}' target='_self'>
-          <div>{{ board.title }} / {{ board.writer }} / {{ board.write_dttm }}</div>  
-        </a>
-        {% endif %}
-        {% endfor %}
-    </div>
-    <div class="introduce-board">
-        <p>(일반 게시판)</p>
-        {% for board in introduce_boards %}
-        {% if board %}
-        <a href='/board/detail/{{ board.id }}' target='_self'>
-          <div>{{ board.title }} / {{ board.writer }} / {{ board.write_dttm }}</div>  
-        </a>
-        {% endif %}
-        {% endfor %}
-    </div>
-    <div class="recommend-board">
-        <p>(일반 게시판)</p>
-        {% for board in recommend_boards %}
-        {% if board %}
-        <a href='/board/detail/{{ board.id }}' target='_self'>
-          <div>{{ board.title }} / {{ board.writer }} / {{ board.write_dttm }}</div>  
-        </a>
-        {% endif %}
-        {% endfor %}
-    </div>
-</div>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자유게시판</title>
+  <link rel="stylesheet" href="/static/css/board_list.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="title-free">
+    <h1>
+      자유게시판
+    </h1>
+  </div>
+  <div class="btn-write">
+      <a href="{% url 'board:board_write' %}"><button type="button" class="btn btn-primary">글쓰기</button></a>
+  </div>
+
+  <div class="board">
+      <div class="normal-board">
+          <div class="alert alert-primary" role="alert">
+            일반
+          </div>
+          {% if normal_boards %}
+            <table class="table table-bordered">
+              <thead class="Table-light">
+                <tr>
+                  <td>제목</td>
+                  <td>작성자</td>
+                  <td>작성시간</td>
+                </tr>
+              </thead>
+              <tbody class="table-group-divider">
+                {% for board in normal_boards %}   
+                  <tr>
+                    <td>
+                      <a href='/board/detail/{{ board.id }}' target='_self'>{{ board.title }}
+                      </a>
+                    </td>
+                    <td>{{ board.writer }}</td>
+                    <td>{{ board.write_dttm }}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          {% else %}
+            <p>작성된 게시물이 없습니다<p>                   
+          {% endif %}
+      </div>
+      <div class="question-board">
+          <div class="alert alert-success" role="alert">
+            질문
+          </div>
+          {% if question_boards %}
+            <table class="table table-bordered">
+              <thead class="Table-light">
+                <tr>
+                  <td>제목</td>
+                  <td>작성자</td>
+                  <td>작성시간</td>
+                </tr>
+              </thead>
+              <tbody class="table-group-divider">
+                {% for board in question_boards %}   
+                  <tr>
+                    <td>
+                      <a href='/board/detail/{{ board.id }}' target='_self'>{{ board.title }}
+                      </a>
+                    </td>
+                    <td>{{ board.writer }}</td>
+                    <td>{{ board.write_dttm }}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          {% else %}
+            <p>작성된 게시물이 없습니다<p>                   
+          {% endif %}
+      </div>
+      <div class="introduce-board">
+          <div class="alert alert-warning" role="alert">
+            가입인사
+          </div>
+          {% if introduce_boards %}
+            <table class="table table-bordered">
+              <thead class="Table-light">
+                <tr>
+                  <td>제목</td>
+                  <td>작성자</td>
+                  <td>작성시간</td>
+                </tr>
+              </thead>
+              <tbody class="table-group-divider">
+                {% for board in introduce_boards %}   
+                  <tr>
+                    <td>
+                      <a href='/board/detail/{{ board.id }}' target='_self'>{{ board.title }}
+                      </a>
+                    </td>
+                    <td>{{ board.writer }}</td>
+                    <td>{{ board.write_dttm }}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          {% else %}
+            <p>작성된 게시물이 없습니다<p>                   
+          {% endif %}
+      </div>
+      <div class="recommend-board">
+          <div class="alert alert-info" role="alert">
+            여행지 추천
+          </div>
+          {% if recommend_boards %}
+            <table class="table table-bordered">
+              <thead class="Table-light">
+                <tr>
+                  <td>제목</td>
+                  <td>작성자</td>
+                  <td>작성시간</td>
+                </tr>
+              </thead>
+              <tbody class="table-group-divider">
+                {% for board in recommend_boards %}   
+                  <tr>
+                    <td>
+                      <a href='/board/detail/{{ board.id }}' target='_self'>{{ board.title }}
+                      </a>
+                    </td>
+                    <td>{{ board.writer }}</td>
+                    <td>{{ board.write_dttm }}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          {% else %}
+            <p>작성된 게시물이 없습니다<p>                   
+          {% endif %}
+      </div>  
+  </div>
+</body>
 {% endblock contents %}

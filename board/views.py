@@ -57,6 +57,9 @@ def board_detail(request, pk):
     board = get_object_or_404(Board, id=pk)
     context['board'] = board
 
+    board.hits += 1
+    board.save()
+
     if board.writer.user_id == login_session:
         context['writer'] = True
     else:

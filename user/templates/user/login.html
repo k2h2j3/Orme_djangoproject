@@ -1,7 +1,9 @@
 {% extends 'home/index.html' %}
 
 {% block contents %}
-<div>로그인</div>
+
+<h1 class="title">로그인</h1>
+
 
 <form action="" method="POST">
     {% csrf_token %}
@@ -17,6 +19,7 @@
     {{ error }}
     {% endif %}
     <button type="submit" name="login-sumbit" value="login">로그인하기</button>
-
 </form>
+
+
 {% endblock contents %}
