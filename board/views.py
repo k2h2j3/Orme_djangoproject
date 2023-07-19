@@ -7,6 +7,17 @@ from user.decorators import login_required
 def board_list(request):
     login_session = request.session.get('login_session', '')
     context = { 'login_session': login_session }
+
+    normal_boards = Board.objects.filter(board_name='normal')
+    question_boards = Board.objects.filter(board_name='question')
+    introduce_boards = Board.objects.filter(board_name='introduce')
+    recommend_boards = Board.objects.filter(board_name='recommend')
+
+    context['normal_boards'] = normal_boards
+    context['question_boards'] = question_boards
+    context['introduce_boards'] = introduce_boards
+    context['recommend_boards'] = recommend_boards
+
     return render(request, 'board/board_list.html', context)
 
 @login_required
