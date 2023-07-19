@@ -11,7 +11,9 @@
         <p>(일반 게시판)</p>
         {% for board in normal_boards %}
         {% if board %}
-        <div>{{ board.title }} / {{ board.writer }} / {{board.write_dttm}}</div>
+        <a href='/board/detail/{{ board.id }}' target='_self'>
+          <div>{{ board.title }} / {{ board.writer }} / {{ board.write_dttm }}</div>  
+        </a>
         {% endif %}
         {% endfor %}
     </div>
@@ -19,7 +21,9 @@
         <p>(질문 게시판)</p>
         {% for board in question_boards %}
         {% if board %}
-        <div>{{ board.title }} / {{ board.writer }} / {{board.write_dttm}}</div>
+        <a href='/board/detail/{{ board.id }}' target='_self'>
+          <div>{{ board.title }} / {{ board.writer }} / {{ board.write_dttm }}</div>  
+        </a>
         {% endif %}
         {% endfor %}
     </div>
@@ -27,7 +31,9 @@
         <p>(일반 게시판)</p>
         {% for board in introduce_boards %}
         {% if board %}
-        <div>{{ board.title }} / {{ board.writer }} / {{board.write_dttm}}</div>
+        <a href='/board/detail/{{ board.id }}' target='_self'>
+          <div>{{ board.title }} / {{ board.writer }} / {{ board.write_dttm }}</div>  
+        </a>
         {% endif %}
         {% endfor %}
     </div>
@@ -35,7 +41,9 @@
         <p>(일반 게시판)</p>
         {% for board in recommend_boards %}
         {% if board %}
-        <div>{{ board.title }} / {{ board.writer }} / {{board.write_dttm}}</div>
+        <a href='/board/detail/{{ board.id }}' target='_self'>
+          <div>{{ board.title }} / {{ board.writer }} / {{ board.write_dttm }}</div>  
+        </a>
         {% endif %}
         {% endfor %}
     </div>

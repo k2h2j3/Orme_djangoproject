@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import BoardWriteForm
 from .models import Board
 from user.models import User
@@ -49,5 +49,28 @@ def board_write(request):
                 for value in write_form.errors.values():
                     context['error'] = value
             return render(request, 'board/board_write.html', context)
+
+def board_detail(request, pk):
+    login_session = request.session.get('login_session', '')
+    context = { 'login_session': login_session }
+
+    board = get_object_or_404(Board, id=pk)
+    context['board'] = board
+
+    if board.writer.user_id == login_session:
+        context['writer'] = True
+    else:
+        context['writer'] = False
+
+    return render(request, 'board/board_detail.html', context)
+
+def board_delete(request, pk):
+    login_session = request.session.get('login_session', '')
+    board = get_object_or_404(Board, id=pk)
+    if board.writer.user_id == login_session:
+        board.delete()
+        return redirect('/board')
+    else:
+        return redirect(f'/board/detail/{pk}/')
 
 
