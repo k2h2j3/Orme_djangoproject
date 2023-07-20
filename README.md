@@ -37,14 +37,17 @@
 
 1. 비 로그인 상태에서 글 작성 시도시 로그인 페이지로 이동
 ![1](https://github.com/k2h2j3/Orme_djangoproject/assets/74819625/03409500-339f-4226-8d08-ad472433f62f)
-<br>
+
 2. 회원가입
+   
 ![2](https://github.com/k2h2j3/Orme_djangoproject/assets/74819625/b62ae0ef-2287-47d6-80f8-dc9fe650732b)
-<br>
+
 3. 회원가입시 에러 출력
+   
 ![2-1](https://github.com/k2h2j3/Orme_djangoproject/assets/74819625/27749c0f-1543-4133-8c64-15d5fab3137a)
-<br>
+
 4. 로그인
+   
 ![3](https://github.com/k2h2j3/Orme_djangoproject/assets/74819625/08e446e2-8e05-40f4-a5fb-28b286fb8ac9)
    
    
