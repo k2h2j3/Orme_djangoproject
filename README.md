@@ -58,7 +58,7 @@ myapp
 |   |
 |   +---templates
 |   |   \---home
-|   |
+|   
 |
 +---media
 |   \---django-summernote
@@ -125,7 +125,7 @@ myapp
 ![5](https://github.com/k2h2j3/Orme_djangoproject/assets/74819625/ed212b2f-5968-43f5-9c58-ba304fde8650)
 
 
-6.기
+6.게시글 상세보기기
 
 
 ![6](https://github.com/k2h2j3/Orme_djangoproject/assets/74819625/d9644af4-f227-4917-bf72-150fb09d8b76)
