@@ -1,0 +1,17 @@
+{% extends 'home/index.html' %}
+
+{% block contents %}
+
+<div class="main_image">
+    <div class = "box-board-introduce">
+        <div class = "">
+            <img src="/static/img/sky.jpg" class="img-sky">
+            <h3 class="main_image_text">자유롭게 사람들과 여행이야기를 나눠보세요~!</h3>
+            <div class="box-board-free">
+                <a href="{% url 'board:board_list' %}" class="tag-board-free"><button class="btnfree"><span>자유게시판</span></button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock contents %}

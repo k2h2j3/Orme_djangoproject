@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import BoardWriteForm
+from .forms import BoardWriteForm, CommentWriteForm
 from .models import Board
 from user.models import User
 from user.decorators import login_required
+from django.core.exceptions import ObjectDoesNotExist, ValidationError
 
 def board_list(request):
     login_session = request.session.get('login_session', '')
@@ -108,5 +109,32 @@ def board_update(request, pk):
                 for value in write_form.errors.values():
                     context['error'] = value
             return render(request, 'board/board_update.html', context)
+
+def comment_write(request, pk):
+    login_session = request.session.get('login_session', '')
+    context = { 'login_session': login_session }
+
+    comment = get_object_or_404(Board, pk=pk)
+    comment_form = CommentWriteForm(request.POST)
+    if comment_form.is_valid():
+        writer = User.objects.get(user_id=login_session)
+        comment = Comment(
+            contents = comment_form,
+            writer=writer
+        )
+        comment.save()
+        context = {
+            "title": "Board",
+            'post_id': pk,
+            'comments': post.comment_set.all(),
+            'comment_form': form,
+        }
+        return render(request, 'blog/post_detail.html', context)
+    else:
+        pass
+
+
+
+
 
 

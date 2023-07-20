@@ -11,4 +11,4 @@ def hello(request):
     else:
         context['login_session'] = True
 
-    return render(request, 'home/index.html', context)
+    return render(request, 'home/main.html', context)

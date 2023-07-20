@@ -1,5 +1,5 @@
 from django import forms
-from .models import Board
+from .models import Board, Comment
 from django_summernote.fields import SummernoteTextField
 from django_summernote.widgets import SummernoteWidget
 
@@ -59,3 +59,13 @@ class BoardWriteForm(forms.ModelForm):
             self.title = title
             self.contents = contents
             self.board_name = board_name
+
+
+class CommentWriteForm(forms.ModelForm):
+
+    class Meta:
+        model = Comment
+        fields = ['contents']
+        widgets = {
+            'contents': forms.Textarea(attrs={'rows': '3', 'cols': '35'})
+        }
