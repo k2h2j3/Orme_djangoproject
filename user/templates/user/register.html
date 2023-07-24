@@ -1,14 +1,13 @@
 {% extends 'home/index.html' %}
 
 {% block contents %}
-<div><h1>회원가입</h1><div>
 
 <form action="" method="POST">
     {% csrf_token %}
     
     {% for form in forms %}
     <div>
-        <label for="{{ form.id_for_label }}">{{ forms.label }}</label>
+        <label for="{{ form.id_for_label }}"></label>
         {{ form }}
     </div>
     {% endfor %}
@@ -16,7 +15,7 @@
     {% if error %}
     {{ error }}
     {% endif %}
-    <button type="submit" name="register-submit" value="register">회원가입하기</button>
+    <button type="submit" name="register-submit" value="register" class="button btnPush btnLightBlue">회원가입</button>
 
 </form>
 {% endblock contents %}

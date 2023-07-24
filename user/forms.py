@@ -9,7 +9,7 @@ class RegisterForm(forms.ModelForm):
         required=True,
         widget=forms.TextInput(
             attrs={
-                'class' : 'user-id',
+                'class' : 'userid',
                 'placeholder' : '아이디'
             }
         ),
@@ -21,7 +21,7 @@ class RegisterForm(forms.ModelForm):
         required=True,
         widget=forms.PasswordInput(
             attrs={
-                'class' : 'user-pw',
+                'class' : 'userpw',
                 'placeholder' : '비밀번호'
             }
         ),
@@ -32,7 +32,7 @@ class RegisterForm(forms.ModelForm):
         required=True,
         widget=forms.PasswordInput(
             attrs={
-                'class' : 'user-pw-confirm',
+                'class' : 'userpwconfirm',
                 'placeholder' : '비밀번호 확인'
             }
         ),
@@ -43,7 +43,7 @@ class RegisterForm(forms.ModelForm):
         required=True,
         widget=forms.TextInput(
             attrs={
-                'class' : 'user-name',
+                'class' : 'username',
                 'placeholder' : '이름'
             }
         ),
@@ -54,7 +54,7 @@ class RegisterForm(forms.ModelForm):
         required=True,
         widget=forms.EmailInput(
             attrs={
-                'class' : 'user-email',
+                'class' : 'useremail',
                 'placeholder' : '이메일'
             }
         ),
@@ -109,7 +109,7 @@ class LoginForm(forms.Form):
         required=True,
         widget=forms.TextInput(
             attrs={
-                'class' : 'user-id',
+                'class' : 'userid',
                 'placeholder' : '아이디'
             }
         ),
@@ -121,7 +121,7 @@ class LoginForm(forms.Form):
         required=True,
         widget=forms.PasswordInput(
             attrs={
-                'class' : 'user-pw',
+                'class' : 'userpw',
                 'placeholder' : '비밀번호'
             }
         ),

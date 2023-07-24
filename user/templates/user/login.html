@@ -2,15 +2,12 @@
 
 {% block contents %}
 
-<h1 class="title">로그인</h1>
-
-
 <form action="" method="POST">
     {% csrf_token %}
 
     {% for form in forms %}
     <div>
-        <label for="{{ form.id_for_label }}">{{ form.label }}</label>
+        <label for="{{ form.id_for_label }}"></label>
         {{ form }}
     </div>
     {% endfor %}
@@ -18,7 +15,7 @@
     {% if error %}
     {{ error }}
     {% endif %}
-    <button type="submit" name="login-sumbit" value="login">로그인하기</button>
+    <button type="submit" name="login-sumbit" value="login" class="loginsubmit button btnPush btnLightBlue">로그인</button>
 </form>
 
 
