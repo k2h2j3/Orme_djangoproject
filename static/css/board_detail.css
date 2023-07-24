@@ -1,0 +1,31 @@
+.boarddetail{
+    background-color: skyblue;
+    width: 90%;
+    padding-bottom: 30px;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+.detail-title {
+    background-color: white;
+    padding-left: 40px;
+    font-size: 45px;
+    border-radius: 15px;
+}
+.detail-category {
+    font-size: 20px;
+    border-radius: 5px;
+}
+.detail-inform {
+    border-radius: 15px;
+}
+.detail-content {
+    margin-top: 30px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 40px;
+    border-radius: 15px;
+    background-color: white;
+}
